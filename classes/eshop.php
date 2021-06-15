@@ -1,10 +1,19 @@
 <?php
+/* 
+Oggi pomeriggio provate ad immaginare quali sono le classi necessarie per creare uno shop online;
+ad esempio, ci saranno sicuramente dei prodotti da acquistare e degli utenti che fanno shopping.
+Strutturare le classi gestendo l'ereditarietà dove necessario; ad esempio ci potrebbero essere degli utenti premium che hanno diritto a degli sconti esclusivi, oppure diverse tipologie di prodotti.
+Provate a far interagire tra di loro gli oggetti: ad esempio, l'utente dello shop inserisce una carta di credito...
+$c = new CreditCard(..);
+$user->insertCreditCard($c);
+BONUS: Gestite eventuali eccezioni che si possono verificare (es: carta di credito scaduta).
+*/
 class Eshop
 {
-  protected $name;
-  protected $email;
-  protected $phone = '333 1231234';
-  protected $url;
+  public $name;
+  public $email;
+  public $phone = '333 1231234';
+  public $url;
   private $id;
 
   static private $TotalEshops = 0;
@@ -42,13 +51,6 @@ class Eshop
     return $this->email;
   }
 
-  public function setPhone($value)
-  {
-    // controllo se è un numero valido
-
-    $this->phone = $value;
-  }
-
   public function getPhone()
   {
     return $this->phone;
@@ -81,14 +83,14 @@ class Eshop
       //prende un carattere casuale da $string
       //substr(string,start,length)
       $char = substr($string, $randNum, 1);
-      
+
       $invalidChars = [".", "@"]; //char filter
 
       if (!in_array($char, $invalidChars)) {
         $userId .= $char; //adds new char in userId
       }
     }
-
+    
     $this->id = strtolower($userId);
   }
 
@@ -97,9 +99,10 @@ class Eshop
     return $this->id;
   }
 
-  static function getDate()
+  //creation date
+  static function getDate() 
   {
-    return date("D/M/Y");
+    return date("d/m/y");
   }
 
   static function getTotalEshops()
