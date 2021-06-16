@@ -1,47 +1,47 @@
 <?php
-
-require_once(__DIR__ . "./order.php");
-
-class Product extends Order
+class Product
 {
   protected $name;
-  protected $quantity;
-  protected $id;
+    protected $qty;
+    protected $price;
 
-  function __construct($product_id, $customer_id, $order_id, $name, $quantity, $id)
-  {
-    parent::__construct($product_id, $customer_id, $order_id);
+    function __construct($name, $qty, $price)
+    {
+        $this->setName($name);
+        $this->setQty($qty);
+        $this->setPrice($price);
+    }
 
-    /* $this->setName($name);
-    $this->setEmail($email); */
-    $this->quantity = (0);
-    $this->setname($name);
-    $this->genId();
-  }
+    public function setName($value)
+    {
+        $this->name = $value;
+    }
 
-  public function setname($value)
-  {
-    $this->name = $value;
-  }
+    public function getName()
+    {
+        return $this->name;
+    }
 
-  public function setQuantity($value)
-  {
-    $this->quantity = $value;
-  }
+    public function setQty($value)
+    {
+        $this->qty = $value;
+    }
 
-  public function getname()
-  {
-    return $this->name;
-  }
-  public function getQuantity()
-  {
-    return $this->quantity;
-  }
+    public function getQty()
+    {
+        return $this->qty;
+    }
 
-  //get id using timestamp
-  private function genId()
-  {
-    $date = new DateTime();
-    $this->id = $date->getTimestamp();
-  }
+    public function setPrice($value)
+    {
+        $this->price = $value;
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+  
 }
+
