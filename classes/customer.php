@@ -1,5 +1,13 @@
 <?php
+
+require_once(__DIR__ . "/../traits/position.php");
+require_once(__DIR__ . "/../errors/invalidEmail.php");
+
 class Customer {
+
+  //use Position;
+  use InvalidEmail;
+
   private $id;
   protected $name;
   protected $email;
@@ -29,6 +37,9 @@ class Customer {
 
   public function setEmail($value) {
     // Controllo se email valida,
+    if(!strstr($value, "@")){
+      throw new InvalidEmail("Errore in setEmail");
+    }
     // se esiste
 
     $this->email = $value;
@@ -71,7 +82,7 @@ class Customer {
     while (strlen($userId) <  $idLength) {
       $randNum = rand(0, strlen($string));
       $char = substr($string, $randNum, 1);
-      $invalidChars = [".", "@"];
+      $invalidChars = [".", "@", " "];
 
       if (!in_array($char, $invalidChars)) {
         $userId .= $char;
