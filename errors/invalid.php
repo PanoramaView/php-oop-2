@@ -1,9 +1,9 @@
 <?php
 
-require_once(__DIR__ . "/../traits/logger.php");
+//require_once(__DIR__ . "/../traits/logger.php");
 
 class InvalidEmail extends Exception {
-  use Logger;
+  //use Logger;
 
   private $defaultMessage = "Errore dato in invalidEmail.php";
 
@@ -12,7 +12,7 @@ class InvalidEmail extends Exception {
       $message = $this->defaultMessage;
     }
 
-    $this->error($message);
+    //$this->error($message);
 
     parent::__construct($message);
   }

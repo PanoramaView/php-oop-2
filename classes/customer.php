@@ -6,7 +6,6 @@ require_once(__DIR__ . "/../errors/invalidEmail.php");
 class Customer {
 
   //use Position;
-  use InvalidEmail;
 
   private $id;
   protected $name;
@@ -38,7 +37,7 @@ class Customer {
   public function setEmail($value) {
     // Controllo se email valida,
     if(!strstr($value, "@")){
-      throw new InvalidEmail("Errore in setEmail");
+      throw new Exception("Errore in setEmail");
     }
     // se esiste
 

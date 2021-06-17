@@ -21,7 +21,8 @@ class CreditCard extends Payment
         $expTime = date_create_from_format("m/Y", $value);
         $this->expires = $expTime;
     }
-    public function getExpires() {
+    public function getExpires()
+    {
         return date_format($this->expires, "m/Y");
-      }
+    }
 }

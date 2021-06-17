@@ -25,12 +25,9 @@ Pensare a come includere un Trait che valga la pena usare tra più classi.
 
 try{
     require_once "./classes/products/smartphoneProduct.php";
-    require_once "./classes/products/smartphoneProduct.php";
-    require_once "./classes/product.php";
     require_once "./classes/customers/primeCustomer.php";
-    require_once "./classes/customer.php";
     require_once "./classes/payments/creditCard.php";
-    require_once "./classes/payment.php";
+    require_once "./classes/payments/bankTransfer.php";
     require_once "./classes/cart.php";
     require_once "./classes/utilities.php";
 
@@ -41,6 +38,9 @@ try{
 $customer = new PrimeCustomer('Mario Rossi', "mario@gmail.com", 18);
 $cart = new Cart($customer);
 $creditCard = new CreditCard(1111222233334444, '05/2025', 324);
+
+$bonificoSepa = new BankTransfer('ciao');
+var_dump($bonificoSepa);
 
 $phone = new SmartphoneProduct('iPhone', 1, 980, 'X', 'Apple');
 $xiaomi10 = new SmartphoneProduct("redmi", 1, 560, "10 Max", "Xiaomi");
